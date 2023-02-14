@@ -19,7 +19,7 @@ export default function PokedexScreen() {
   const loadPokemons = async() => {
     try {
       const response = await getAllCharacters(nextUrl)
-      console.log(response);
+      // console.log(response);
       
       setNextUrl(response.next)
       const pokemonArray: Array<Pokedex> = [];

@@ -1,79 +1,80 @@
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Pressable, Image } from  'react-native'
 import React from 'react'
+import { Pokedex } from '../types/Pokemon';
+import { getColorByPokemonType } from './../utils/getColorsByPokemonType';
 
 
 interface props {
-    character: 
+    character: Pokedex
 }
-export default function CharacterCard({character}: props) {
+
+export default function PokemonCard({character}: props) {
 
     const goToCharacterDetail = () => {
-        // console.log(`go to: ${character.name} || ${character.id}`);
-        console.log(character);
+        console.log(`go to: ${character.name} || ${character.id}`);
+        // console.log(character);
         
     }
+
+  const pokemonColor = getColorByPokemonType(character.types[0].type.name)  
+  const bgStyles =  { backgroundColor: pokemonColor, ...styles.bgStyles}  
   return (
-    // <View style={styles.container}>
-    //     <Pressable
-    //     onPress={goToCharacterDetail}
-    //     >
-    //     <View style={styles.card}>
-    //         <View style={styles.spacing}>
-    //         <View style={styles.bgCard}>
-    //             <Text>{character.birth_year}</Text>
-    //             <Image source={{uri: character.image}} style={styles.image}/>
-    //             <Text style={styles.name}>{character.name}</Text>
-    //         </View>
-    //         </View>
-    //     </View>
-    // </Pressable>
-    // </View>
-    <View>
-        <Text>Test</Text>
+    <View style={styles.container}>
+        <Pressable onPress={goToCharacterDetail}>
+            <View style={styles.card}>
+                <View style={styles.spacing}>
+                <View style={bgStyles}>
+                    <Text style={styles.number}>
+                    #{`${character.order}`.padStart(3, '0')}
+                    </Text>
+                    <Text style={styles.name}>{character.name}</Text>
+                    <Image source={{ uri: character.sprites.front_default}} style={styles.image} />
+                </View>
+                </View>
+            </View>
+        </Pressable>
     </View>
+    
   )
 }
 
 const styles = StyleSheet.create({
     card: {
-        flex: 1,
-        height:190,
-        // marginTop:30
+      flex: 1,
+      height: 130,
     },
     container:{
         flex: 1,
         // paddingTop:40
     },
-    spacing:{
-        flex:1,
-        padding:5,
+    spacing: {
+      flex: 1,
+      padding: 5,
     },
-    bgStyles:{
-        flex:1,
-        borderRadius:15,
-        padding:10,
-        backgroundColor: 'red'
+    bgStyles: {
+      flex: 1,
+    borderRadius: 15,
+    padding: 10,
     },
-    bgCard: {
-        backgroundColor: 'gray',
-        borderRadius: 10,
-        paddingBottom:10,
-        paddingTop:60,
-        paddingLeft:15,
-        marginTop: 10
-    },
-    image: {
-        position: 'absolute',
-        bottom: 2,
-        right: 2,
-        width: 90,
-        height: 90,
-        borderRadius: 50,
+    number: {
+      position: "absolute",
+      right: 10,
+      top: 10,
+      color: "#fff",
+      fontSize: 11,
     },
     name: {
-        paddingTop: 10,
-        fontSize: 15,
-        fontWeight: 'bold',
-        color: '#fff'
-    }
-})
+      color: "#fff",
+      fontWeight: "bold",
+      fontSize: 15,
+      paddingTop: 10,
+      textTransform: 'capitalize'
+    },
+    image: {
+      position: "absolute",
+      bottom: 2,
+      right: 2,
+      width: 90,
+      height: 90,
+    },
+  });
