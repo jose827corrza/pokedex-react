@@ -1,7 +1,10 @@
 import { View, Text, StyleSheet, TouchableWithoutFeedback, Pressable, Image } from  'react-native'
 import React from 'react'
-import { Pokedex } from '../types/Pokemon';
 import { getColorByPokemonType } from './../utils/getColorsByPokemonType';
+import { useNavigation } from '@react-navigation/native';
+import { Pokedex } from './../types/Pokemon';
+import { PokemonParams } from '../navigation/PokedexNavigation';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 
 interface props {
@@ -10,10 +13,10 @@ interface props {
 
 export default function PokemonCard({character}: props) {
 
+    const navigation = useNavigation<StackNavigationProp<PokemonParams>>();
     const goToCharacterDetail = () => {
         console.log(`go to: ${character.name} || ${character.id}`);
-        // console.log(character);
-        
+        navigation.navigate('PokemonInfo',{character: character})
     }
 
   const pokemonColor = getColorByPokemonType(character.types[0].type.name)  

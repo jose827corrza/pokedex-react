@@ -33,7 +33,7 @@ function renderLogo (){
   return (
     <Image 
       source={require('../../assets/pokeball.png')}
-      style={{width:45, height:45, top:5}}
+      style={{width:75, height:75, top:5}}
     />
   )
 }
