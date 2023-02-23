@@ -16,7 +16,7 @@ export type PokemonParams = {
 const Stack = createStackNavigator<PokemonParams>();
 export default function PokedexNavigation() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerTitleAlign: 'center'}}>
         <Stack.Screen name={'Pokedex'} component={PokedexScreen}/>
         <Stack.Screen name={'PokemonInfo'} component={PokemonScreen} options={{
           // headerShown: true,

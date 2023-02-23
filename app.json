@@ -21,6 +21,7 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "xyz.josedcorredor.pokenative",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -28,6 +29,11 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3e14b8f4-9c44-4d6e-9f3b-2280b189c065"
+      }
     }
   }
 }
