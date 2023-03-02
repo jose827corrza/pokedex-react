@@ -16,7 +16,7 @@ export default function PokemonCard({character}: props) {
     const navigation = useNavigation<StackNavigationProp<PokemonParams>>();
     const goToCharacterDetail = () => {
         console.log(`go to: ${character.name} || ${character.id}`);
-        navigation.navigate('PokemonInfo',{character: character})
+        navigation.navigate('PokemonInfo',{character})
     }
 
   const pokemonColor = getColorByPokemonType(character.types[0].type.name)  

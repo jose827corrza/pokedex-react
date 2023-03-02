@@ -10,7 +10,7 @@ export type PokemonParams = {
   Pokedex: object
   PokemonInfo: {
     character: Pokedex
-    navigation: typeof Navigation
+    // navigation: typeof Navigation
   }
 }
 const Stack = createStackNavigator<PokemonParams>();
